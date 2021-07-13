@@ -18,6 +18,8 @@ namespace UP.conteiner
             var builderBase = new ContainerBuilder();
             //builderBase.RegisterType<DataTable>().AsSelf();
             //builderBase.RegisterType<DB>().As<IDB>().UsingConstructor(typeof(DataTable));
+            builderBase.RegisterType<ExportDataTableToWordService>().AsSelf().As<IExportDataTable>();
+            builderBase.RegisterType<DefaultDialogService>().AsSelf().As<IDialogService>();
 
             builderBase.Register((c, p) => new DB(p.Named<DataTable>("p1"), p.Named<string>("p2"))).AsSelf().As<IDB>();
             builderBase.Register((c, p) => new DB(p.Named<DataTable>("p1"))).AsSelf().As<IDB>();

@@ -2,21 +2,21 @@
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
-using System.Windows;
 using System.Windows.Input;
-using UP.command;
-using UP.conteiner;
 using UP.model;
+using UP.server;
 
 namespace UP.vm
 {
     class ViewModel : AbstractViewModelTable
     {
-       //private IContainer _con;
+        //private IContainer _con;
+        IDialogService _dialogservice;
         public ViewModel(string SelectedCommandText, string tablename) : base(SelectedCommandText, tablename)
         {
             //ContainerBuilder _myconteiner = MuConteiner.ContainerMain();
             //_con = _myconteiner.Build();
+            _dialogservice = _con.Resolve<IDialogService>();
         }
         #region fields
 
@@ -243,7 +243,17 @@ namespace UP.vm
                   (apllyFilterCommand = _con.Resolve<ICommand>(new NamedParameter("p1", p1)));
             }
         }
+        private ICommand reportFilterCommand;
+        public ICommand ReportFilterCommand
+        {
+            get
+            {
+                Action<object> p1 = obj => { Report(); };
 
+                return reportFilterCommand ??
+                  (reportFilterCommand = _con.Resolve<ICommand>(new NamedParameter("p1", p1)));
+            }
+        }
         private ICommand resetFilterCommand;
         public ICommand ResetFilterCommand
         {
@@ -288,6 +298,18 @@ namespace UP.vm
             string[] enum5 = new string[] { "Друк-фильтры", "Вакуумный", "Под наливом", "Комбинированный" };
             filters.Add(Filter.GenerateFilterString(f5, ColumnName5, enum5));
 
+            bool[] f6 = new bool[] { Checkbox60, Checkbox61, Checkbox62, Checkbox63, Checkbox64, Checkbox65, Checkbox66, Checkbox67, Checkbox68 };
+            string ColumnName6 = "Конструкция";
+            string[] enum6 = new string[] { "Нутч-фильтры", "Фильтр – прессы", "Листовые", "Патронные",
+                "Барабанные", "Дисковая", "Ленточная", "Карусельная" , "Рукавная"};
+            filters.Add(Filter.GenerateFilterString(f6, ColumnName6, enum6));
+
+            bool[] f7 = new bool[] { Checkbox70, Checkbox71, Checkbox72, Checkbox73, Checkbox74, Checkbox75, Checkbox76};
+            string ColumnName7 = "Фильтрующий материал";
+            string[] enum7 = new string[] { "Песок", "Картон", "Гравий", "Ткань",
+                "Сетка", "Пористый полимерный материал", "Керамика"};
+            filters.Add(Filter.GenerateFilterString(f7, ColumnName7, enum7));
+
             string filter = Filter.GenerateFullFilter(filters);
 
             DT.DefaultView.RowFilter = filter;
@@ -327,6 +349,16 @@ namespace UP.vm
             Checkbox75 = false;
             Checkbox76 = false;
             DT.DefaultView.RowFilter = "";
+        }
+
+        private void Report()
+        {
+            IExportDataTable export = _con.Resolve<IExportDataTable>();
+            if (_dialogservice.SaveFileDialog() == true)
+            {
+                export.Save(_dialogservice.FilePath, DT);
+                _dialogservice.ShowMessage("Файл сохранен");
+            }
         }
         #endregion
     }

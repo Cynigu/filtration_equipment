@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UP.view"
         mc:Ignorable="d"
-        Title="{Binding TableName}" Height="739.6" Width="1317.6" WindowStartupLocation="CenterScreen">
+        Title="{Binding TableName}" Height="610" Width="1317.6" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style TargetType="TextBox">
             <Setter Property="TextBox.Height" Value= "23" />
@@ -46,8 +46,7 @@
             <RowDefinition Height="30*"/>
             <RowDefinition Height="30*"/>
             <RowDefinition Height="30*"/>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="30*"/>
+
             <RowDefinition Height="22*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -60,7 +59,7 @@
             <ColumnDefinition Width="120*"/>
             <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
-        <local:UserControlTable x:Name = "UserControlTable" Grid.ColumnSpan="3" Grid.Column="1" Grid.RowSpan="10" Grid.Row="1" />
+        <local:UserControlTable x:Name = "UserControlTable" Grid.ColumnSpan="3" Grid.Column="1" Grid.RowSpan="8" Grid.Row="1" />
         <GroupBox Grid.Column="5" Header="Принцип действия во времени: " Grid.Row="1" Foreground="#FFFFF8F0" BorderBrush="#FF374785" >
             <Grid  >
                 <Grid.RowDefinitions>
@@ -118,7 +117,7 @@
                 <CheckBox Content="Фильтры для аэрозолей" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding Checkbox31}" Grid.Row="1"/>
             </Grid>
         </GroupBox>
-        <GroupBox Grid.Column="5" Header="Способ создания движущей силы: " Grid.Row="4" Foreground="#FFFFF8F0" BorderBrush="#FF374785" Grid.RowSpan="3" >
+        <GroupBox Grid.Column="5" Header="Конструкция: " Grid.Row="4" Foreground="#FFFFF8F0" BorderBrush="#FF374785" Grid.RowSpan="3" >
             <Grid  >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10*"/>
@@ -162,66 +161,11 @@
                 <CheckBox Content="Керамика" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="6" IsChecked="{Binding Checkbox76}"/>
             </Grid>
         </GroupBox>
-        <Button Content="Применить" Grid.Column="5" Grid.Row="9" VerticalAlignment="Center" 
+        <Button Content="Применить" Grid.Column="5" Grid.Row="7" VerticalAlignment="Center" 
                 Command="{Binding ApplyFilterCommand}"/>
-        <Button Content="Сбросить" Grid.Column="6" Grid.Row="9" VerticalAlignment="Center" 
+        <Button Content="Сбросить" Grid.Column="6" Grid.Row="7" VerticalAlignment="Center" 
                 Command="{Binding ResetFilterCommand}"/>
-        <Button Content="Отчет" Grid.Column="6" Grid.Row="10" VerticalAlignment="Top" />
-        <GroupBox Grid.Column="5" Header="Частота среза ωср (fср ):" Grid.Row="7" Foreground="#FFFFF8F0" BorderBrush="#FF374785" >
-            <Grid  >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="30*"/>
-                    <ColumnDefinition Width="70*"/>
-                    <ColumnDefinition Width="30*"/>
-                    <ColumnDefinition Width="70*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="От: " VerticalAlignment="Center" FontSize="12"/>
-                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="До: " VerticalAlignment="Center" Grid.Column="2" FontSize="12"/>
-                <TextBox Grid.Column="1" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="3" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-            </Grid>
-        </GroupBox>
-        <GroupBox Grid.Column="6" Header="Постоянная времени τ: " Grid.Row="7" Foreground="#FFFFF8F0" BorderBrush="#FF374785" >
-            <Grid  >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="30*"/>
-                    <ColumnDefinition Width="70*"/>
-                    <ColumnDefinition Width="30*"/>
-                    <ColumnDefinition Width="70*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="От: " VerticalAlignment="Center" FontSize="12"/>
-                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="До: " VerticalAlignment="Center" Grid.Column="2" FontSize="12"/>
-                <TextBox Grid.Column="1" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="3" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-            </Grid>
-        </GroupBox>
-        <GroupBox Grid.Column="5" Header="Резонансная частота: " Grid.Row="8" Foreground="#FFFFF8F0" BorderBrush="#FF374785" >
-            <Grid  >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="30*"/>
-                    <ColumnDefinition Width="70*"/>
-                    <ColumnDefinition Width="30*"/>
-                    <ColumnDefinition Width="70*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="От: " VerticalAlignment="Center" FontSize="12"/>
-                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="До: " VerticalAlignment="Center" Grid.Column="2" FontSize="12"/>
-                <TextBox Grid.Column="1" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="3" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-            </Grid>
-        </GroupBox>
-        <GroupBox Grid.Column="6" Header="Добротность: " Grid.Row="8" Foreground="#FFFFF8F0" BorderBrush="#FF374785" >
-            <Grid  >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="30*"/>
-                    <ColumnDefinition Width="70*"/>
-                    <ColumnDefinition Width="30*"/>
-                    <ColumnDefinition Width="70*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="От: " VerticalAlignment="Center" FontSize="12"/>
-                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="До: " VerticalAlignment="Center" Grid.Column="2" FontSize="12"/>
-                <TextBox Grid.Column="1" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="3" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-            </Grid>
-        </GroupBox>
+        <Button Content="Отчет" Grid.Column="6" Grid.Row="8" VerticalAlignment="Top" 
+                Command="{Binding ReportFilterCommand}"/>
     </Grid>
 </Window>
