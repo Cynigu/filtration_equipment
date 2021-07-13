@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UP.view"
         mc:Ignorable="d"
-        Title="{Binding TableName}" Height="614.8" Width="1317.6" WindowState="Maximized">
+        Title="{Binding TableName}" Height="739.6" Width="1317.6" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style TargetType="TextBox">
             <Setter Property="TextBox.Height" Value= "23" />
@@ -25,7 +25,9 @@
             <Setter Property="TextBlock.FontFamily" Value="Arial"/>
             <Setter Property="TextBlock.FontSize" Value="14"  />
         </Style>
-
+        <Style TargetType="CheckBox">
+            <Setter Property="TextBlock.Foreground" Value="#FFFFF8F0"/>
+        </Style>
         <Style TargetType="Grid" >
             <Setter Property="Grid.Background" Value="#FF1B2646"/>
         </Style>
@@ -44,7 +46,8 @@
             <RowDefinition Height="30*"/>
             <RowDefinition Height="30*"/>
             <RowDefinition Height="30*"/>
-
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="30*"/>
             <RowDefinition Height="22*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -52,11 +55,173 @@
             <ColumnDefinition Width="80*"/>
             <ColumnDefinition Width="80*"/>
             <ColumnDefinition Width="170*"/>
-            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="10*"/>
             <ColumnDefinition Width="120*"/>
             <ColumnDefinition Width="120*"/>
             <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
-        <local:UserControlTable x:Name = "UserControlTable" Grid.ColumnSpan="3" Grid.Column="1" Grid.RowSpan="9" Grid.Row="1" />
+        <local:UserControlTable x:Name = "UserControlTable" Grid.ColumnSpan="3" Grid.Column="1" Grid.RowSpan="10" Grid.Row="1" />
+        <GroupBox Grid.Column="5" Header="Принцип действия во времени: " Grid.Row="1" Foreground="#FFFFF8F0" BorderBrush="#FF374785" >
+            <Grid  >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+                <CheckBox Content="Периодический" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding Checkbox10}"/>
+                <CheckBox Content="Непрерывный" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" IsChecked="{Binding Checkbox11}"/>
+            </Grid>
+        </GroupBox>
+        <TextBlock Grid.Column="5" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Фильтры: " VerticalAlignment="Bottom"/>
+        <GroupBox Grid.Column="6" Header="Степень очистки: " Grid.Row="1" Foreground="#FFFFF8F0" BorderBrush="#FF374785" >
+            <Grid  >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+                <CheckBox Content="Грубая" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding Checkbox20}"/>
+                <CheckBox Content="Тонкая" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" IsChecked="{Binding Checkbox21}"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Column="5" Header="Способ создания движущей силы: " Grid.Row="2" Foreground="#FFFFF8F0" BorderBrush="#FF374785" Grid.RowSpan="2" >
+            <Grid  >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+                <CheckBox Content="Друк-фильтры" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding Checkbox50}"/>
+                <CheckBox Content="Вакуумный" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" IsChecked="{Binding Checkbox51}"/>
+                <CheckBox Content="Под наливом" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" IsChecked="{Binding Checkbox52}"/>
+                <CheckBox Content="Комбинированный" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="3" IsChecked="{Binding Checkbox53}"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Column="6" Header="Направление движения фильтрата: " Grid.Row="2" Foreground="#FFFFF8F0" BorderBrush="#FF374785" >
+            <Grid   >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+                <CheckBox Content="Противоположное" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding Checkbox40}"/>
+                <CheckBox Content="Cовпадающее" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" IsChecked="{Binding Checkbox41}"/>
+                <CheckBox Content="Перекрестное" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" IsChecked="{Binding Checkbox42}"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Column="6" Header="Очищающие среды: " Grid.Row="3" Foreground="#FFFFF8F0" BorderBrush="#FF374785" >
+            <Grid  >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+                <CheckBox Content="Фильтры для суспензий" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding Checkbox30}"/>
+                <CheckBox Content="Фильтры для аэрозолей" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding Checkbox31}" Grid.Row="1"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Column="5" Header="Способ создания движущей силы: " Grid.Row="4" Foreground="#FFFFF8F0" BorderBrush="#FF374785" Grid.RowSpan="3" >
+            <Grid  >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+                <CheckBox Content="Нутч-фильтры" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding Checkbox60}"/>
+                <CheckBox Content="Фильтр – прессы" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" IsChecked="{Binding Checkbox61}"/>
+                <CheckBox Content="Листовые" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" IsChecked="{Binding Checkbox62}"/>
+                <CheckBox Content="Патронные" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="3" IsChecked="{Binding Checkbox63}"/>
+                <CheckBox Content="Барабанные" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="4" IsChecked="{Binding Checkbox64}"/>
+                <CheckBox Content="Дисковая" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="5" IsChecked="{Binding Checkbox65}"/>
+                <CheckBox Content="Ленточная" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="6" IsChecked="{Binding Checkbox66}"/>
+                <CheckBox Content="Карусельная" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="7" IsChecked="{Binding Checkbox67}"/>
+                <CheckBox Content="Рукавная" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="8" IsChecked="{Binding Checkbox68}"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Column="6" Header="Фильтрующий материал: " Grid.Row="4" Foreground="#FFFFF8F0" BorderBrush="#FF374785" Grid.RowSpan="3" >
+            <Grid  >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+                <CheckBox Content="Песок" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding Checkbox70}"/>
+                <CheckBox Content="Картон" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" IsChecked="{Binding Checkbox71}"/>
+                <CheckBox Content="Гравий" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" IsChecked="{Binding Checkbox72}"/>
+                <CheckBox Content="Ткань" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="3" IsChecked="{Binding Checkbox73}"/>
+                <CheckBox Content="Сетка" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="4" IsChecked="{Binding Checkbox74}"/>
+                <CheckBox Content="Пористый полимерный материал" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="5" IsChecked="{Binding Checkbox75}"/>
+                <CheckBox Content="Керамика" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="6" IsChecked="{Binding Checkbox76}"/>
+            </Grid>
+        </GroupBox>
+        <Button Content="Применить" Grid.Column="5" Grid.Row="9" VerticalAlignment="Center" 
+                Command="{Binding ApplyFilterCommand}"/>
+        <Button Content="Сбросить" Grid.Column="6" Grid.Row="9" VerticalAlignment="Center" 
+                Command="{Binding ResetFilterCommand}"/>
+        <Button Content="Отчет" Grid.Column="6" Grid.Row="10" VerticalAlignment="Top" />
+        <GroupBox Grid.Column="5" Header="Частота среза ωср (fср ):" Grid.Row="7" Foreground="#FFFFF8F0" BorderBrush="#FF374785" >
+            <Grid  >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="70*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="От: " VerticalAlignment="Center" FontSize="12"/>
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="До: " VerticalAlignment="Center" Grid.Column="2" FontSize="12"/>
+                <TextBox Grid.Column="1" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="3" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Column="6" Header="Постоянная времени τ: " Grid.Row="7" Foreground="#FFFFF8F0" BorderBrush="#FF374785" >
+            <Grid  >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="70*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="От: " VerticalAlignment="Center" FontSize="12"/>
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="До: " VerticalAlignment="Center" Grid.Column="2" FontSize="12"/>
+                <TextBox Grid.Column="1" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="3" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Column="5" Header="Резонансная частота: " Grid.Row="8" Foreground="#FFFFF8F0" BorderBrush="#FF374785" >
+            <Grid  >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="70*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="От: " VerticalAlignment="Center" FontSize="12"/>
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="До: " VerticalAlignment="Center" Grid.Column="2" FontSize="12"/>
+                <TextBox Grid.Column="1" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="3" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Column="6" Header="Добротность: " Grid.Row="8" Foreground="#FFFFF8F0" BorderBrush="#FF374785" >
+            <Grid  >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="70*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="От: " VerticalAlignment="Center" FontSize="12"/>
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="До: " VerticalAlignment="Center" Grid.Column="2" FontSize="12"/>
+                <TextBox Grid.Column="1" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="3" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+            </Grid>
+        </GroupBox>
     </Grid>
 </Window>

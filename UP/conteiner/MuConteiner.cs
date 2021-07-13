@@ -24,7 +24,7 @@ namespace UP.conteiner
 
             builderBase.Register((c, p) =>new AsyncCommand(p.Named<Func<Task>>("p1"))).AsSelf().As<IAsyncCommand>();
             builderBase.Register((c, p) => new RelayCommand(p.Named<Action<object>>("p1"))).AsSelf().As<ICommand>();
-            builderBase.Register((c, p) => new RelayCommand(p.Named<Action<object>>("p1"), p.Named<Func<object, bool>>("p2"))).AsSelf().As<ICommand>();
+            //builderBase.Register((c, p) => new RelayCommand(p.Named<Action<object>>("p1"), p.Named<Func<object, bool>>("p2"))).AsSelf().As<ICommand>();
 
             return builderBase;
         }

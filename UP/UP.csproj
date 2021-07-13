@@ -126,6 +126,7 @@
     </ApplicationDefinition>
     <Compile Include="command\Commands.cs" />
     <Compile Include="conteiner\MuConteiner.cs" />
+    <Compile Include="model\Filter.cs" />
     <Compile Include="server\DB.cs" />
     <Compile Include="server\IDB.cs" />
     <Compile Include="view\UserControlTable.xaml.cs">
@@ -177,8 +178,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

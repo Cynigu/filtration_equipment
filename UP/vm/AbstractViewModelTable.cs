@@ -19,7 +19,7 @@ namespace UP.vm
         protected readonly DB _dB;
         private readonly string _SelectedCommandText; // Для отображения таблицы 
         //private ContainerBuilder _myconteiner;
-        IContainer _con;
+        protected IContainer _con;
         #endregion
 
         #region Constructors
@@ -89,14 +89,14 @@ namespace UP.vm
         #endregion
 
         #region Commands
-        private AsyncCommand fillCommand;
+        private IAsyncCommand fillCommand;
         public IAsyncCommand FillCommand
         {
             get
             {
                 Func<Task> p1 = async () => { await FillAsync(); };
                 return fillCommand ??
-                    (fillCommand = _con.Resolve<AsyncCommand>(new NamedParameter("p1", p1)));
+                    (fillCommand = _con.Resolve<IAsyncCommand>(new NamedParameter("p1", p1)));
             }
         }
         #endregion
